@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	
+<html>
+	<head>
+		<title>Controller Methods</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		 
+		<style>
+			#emailForm.ng-invalid {
+    				background-color: pink;
+			}
+
+			#emailForm.ng-valid {
+    				background-color: lightBlue;
+			}
+		</style>
+	</head>	
+
+	<body>
+		<h1>AngularJS Tutorial: Validating Data and Controller Methods</h1>	
+
+		<form ng-app="myApp" ng-controller="myCtrl"  name="myForm">
+			<h2>Example #1: Validating an Email Address</h2>
+
+    			<span>Email:</span>
+    
+			<input type="email" name="myAddress" ng-model="text">
+    			<span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+
+			<h2>Example #2: Validating Application Data</h2>
+
+			<span>Email:</span>
+    		
+			<input type="email" name="myAddress2" ng-model="text2" required>
+    			
+			<h3>Status</h3>
+    			<p>Valid: {{myForm.myAddress2.$valid}}</p>
+    			<p>Dirty: {{myForm.myAddress2.$dirty}}</p>
+    			<p>Touched: {{myForm.myAddress2.$touched}}</p>
+
+			<h2>Example #3: CSS Rules According to Status</h2>
+
+			<span>Email:</span>
+   			<input id="emailForm" type="email" ng-model="text3" required>
+
+			
+			<h2>Example #4: Controller Methods</h2>
+			
+			<h1 ng-click="changeValue()">{{headerValue}}</h1>
+			
+		</form>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+    					$scope.headerValue = "Header has not been clicked";
+
+    					$scope.changeValue = function() {
+        					$scope.headerValue= "Header has been clicked";
+    					}
+				});
+			</script> 
+			
+	</body>
+</html> 
